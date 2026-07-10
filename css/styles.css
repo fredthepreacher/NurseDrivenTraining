@@ -10,7 +10,10 @@
   --navy-tint: #F7E6EC;  /* pale rose-lavender tint */
   --gold: #E8617F;       /* strawberry pink — primary accent / buttons */
   --gold-dark: #C23F5E;  /* deeper strawberry — hover states */
+  --gold-darker: #9E2F49; /* WCAG AA-safe strawberry for small text on light tints */
+  --gold-light: #F7A8B8; /* WCAG AA-safe strawberry for text on dark berry backgrounds */
   --gold-tint: #FDEDE1;  /* peachy cream tint */
+  --on-gold: #3A1220;    /* WCAG AA-safe dark text for use on top of --gold buttons */
   --sage: #8FAE8C;       /* muted leaf green — a nod to the strawberry leaf */
   --sage-tint: #EEF4EC;
   --cream: #FFF8F4;      /* warm cream background */
@@ -94,8 +97,17 @@ section { padding: var(--space-6) 0; }
 .skip-link:focus { left: 0; }
 
 :focus-visible {
-  outline: 3px solid var(--gold);
+  outline: 3px solid var(--gold-dark);
   outline-offset: 2px;
+}
+/* On dark/berry backgrounds, gold-dark doesn't meet 3:1 against navy — swap to white for a visible, compliant focus ring */
+.hero :focus-visible,
+.cta-banner :focus-visible,
+.site-footer :focus-visible,
+.page-hero :focus-visible,
+.section-navy :focus-visible,
+.mobile-cta-bar :focus-visible {
+  outline-color: var(--white);
 }
 
 /* ---------- Buttons ---------- */
@@ -115,8 +127,8 @@ section { padding: var(--space-6) 0; }
   min-height: 48px;
 }
 .btn:hover { transform: translateY(-1px); }
-.btn-primary { background: var(--gold); color: var(--navy-dark); box-shadow: var(--shadow-sm); }
-.btn-primary:hover { background: var(--gold-dark); }
+.btn-primary { background: var(--gold); color: var(--on-gold); box-shadow: var(--shadow-sm); }
+.btn-primary:hover { background: var(--gold-dark); color: var(--white); }
 .btn-outline { background: transparent; border-color: var(--white); color: var(--white); }
 .btn-outline:hover { background: var(--white); color: var(--navy); }
 .btn-navy { background: var(--navy); color: var(--white); }
@@ -167,7 +179,11 @@ section { padding: var(--space-6) 0; }
   font-size: 1.1rem;
   flex-shrink: 0;
 }
+.brand-mark-img { width: 42px; height: 42px; object-fit: contain; flex-shrink: 0; }
 .brand-text { line-height: 1.1; }
+.brand-logo-feature { max-width: 260px; margin: 0 auto var(--space-3); }
+.brand-logo-feature img { width: 100%; height: auto; display: block; }
+.footer-logo { width: 46px; height: 46px; object-fit: contain; flex-shrink: 0; }
 .brand-text span { display: block; font-family: var(--font-body); font-weight: 500; font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
 
 .main-nav { display: flex; align-items: center; gap: var(--space-4); }
@@ -449,7 +465,7 @@ body { padding-bottom: 76px; }
 .price-tag {
   display: inline-block;
   background: var(--gold-tint);
-  color: var(--gold-dark);
+  color: var(--gold-darker);
   font-weight: 700;
   padding: 0.3rem 0.75rem;
   border-radius: 999px;
@@ -496,7 +512,7 @@ body { padding-bottom: 76px; }
   width: 2.5rem; height: 2.5rem;
   border-radius: 50%;
   background: var(--navy);
-  color: var(--gold);
+  color: var(--white);
   display: flex; align-items: center; justify-content: center;
   font-family: var(--font-head); font-weight: 700;
   margin-bottom: 0.75rem;
@@ -582,7 +598,7 @@ fieldset { border: none; padding: 0; margin: 0; }
 .footer-grid ul { list-style: none; padding: 0; margin: 0; }
 .footer-grid li { margin-bottom: 0.55rem; }
 .footer-grid a { text-decoration: none; color: #F6DCE4; }
-.footer-grid a:hover { color: var(--gold); }
+.footer-grid a:hover { color: var(--gold-light); text-decoration: underline; }
 .footer-brand { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.8rem; }
 .footer-bottom {
   margin-top: var(--space-5);

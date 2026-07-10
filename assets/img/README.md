@@ -1,15 +1,17 @@
-# Photos
+# Drop your 4 photos in this exact folder
 
-These 4 files are now included in this folder and wired into the site automatically:
+Every page is already wired up with `<img>` tags pointing to the filenames below — I just don't have a way to pull the actual image files out of the chat and onto disk myself, so the last step is on you: save your 4 photos into this `assets/img/` folder using these exact filenames, and every placeholder box will turn into the real photo automatically (no other changes needed).
 
-| Filename | Used on |
-|---|---|
-| `classroom-session.jpg` | Home page hero, CNA Program page |
-| `team-welcome.jpg` | Home page (Who We Are), About page (Meet the Team) |
-| `exterior-storefront.jpg` | About page, Contact page |
-| `og-cover.jpg` | Social sharing preview image (Open Graph / Twitter meta tags on every page) |
+| Filename to use | Which photo | Used on |
+|---|---|---|
+| `classroom-session.jpg` | The instructor + 4 students in the mint-green classroom with the CPR whiteboard | Home page hero, CNA Program page |
+| `team-welcome.jpg` | The two women waving at the "Unit A / 2270" door | Home page (Who We Are), About page (Meet the Team) |
+| `exterior-storefront.jpg` | The blue building exterior with the "Spas & More" and Nurse Driven Training roadside signage | About page, Contact page |
+| `og-cover.jpg` | A wide (1200×630px) version of your best photo, for social sharing previews | Referenced in Home page meta tags — optional, not wired to a visible `<img>` tag |
+| `logo.png` | Your logo file (transparent background) | Referenced in schema markup; can also replace the "NDT" text badge in the header if you want the real logo |
 
 Still needed, not yet provided:
-- `logo.png` — your transparent-background logo file (referenced in schema markup; can also replace the "NDT" text badge in the header)
-- `favicon.ico` and `apple-touch-icon.png` (180x180px) — browser tab icon and iOS home-screen icon, referenced on every page but not yet supplied
 - Instructor/founder headshot(s) for the About page bio section
+- Any additional classroom or clinical photos for a future gallery
+
+Once the first three files are in this folder, every page will display them immediately — no code changes required on your end.

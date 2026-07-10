@@ -7,11 +7,20 @@
 <meta name="description" content="Nurse-led CNA, HHA, and CPR training in Port Charlotte, FL. Hands-on classes, flexible evening and weekend schedules, and a supportive path to a healthcare career.">
 <link rel="canonical" href="https://www.nursedriventraining.com/">
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="Nurse Driven Training">
 <meta property="og:title" content="Nurse Driven Training | CNA, HHA & CPR Classes in Port Charlotte, FL">
 <meta property="og:description" content="Nurse-led CNA, HHA, and CPR training in Port Charlotte, FL. Hands-on classes, flexible schedules, and a supportive path to a healthcare career.">
 <meta property="og:url" content="https://www.nursedriventraining.com/">
-<meta property="og:image" content="/assets/img/og-cover.jpg">
+<meta property="og:image" content="https://www.nursedriventraining.com/assets/img/og-cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Nurse Driven Training — CNA, HHA & CPR training in Port Charlotte, FL">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Nurse Driven Training | CNA, HHA & CPR Classes in Port Charlotte, FL">
+<meta name="twitter:description" content="Nurse-led CNA, HHA, and CPR training in Port Charlotte, FL. Hands-on classes, flexible schedules, and a supportive path to a healthcare career.">
+<meta name="twitter:image" content="https://www.nursedriventraining.com/assets/img/og-cover.jpg">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -51,12 +60,25 @@
     <nav class="main-nav" aria-label="Primary">
       <ul class="nav-links" id="primary-nav">
         <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="programs.html">Programs</a></li>
-        <li><a href="clinical-partnerships.html">Clinical Partnerships</a></li>
+        <li class="nav-item has-dropdown">
+          <button type="button" class="nav-dropdown-trigger" aria-expanded="false" aria-controls="dropdown-programs">Programs <span class="caret" aria-hidden="true">&#9662;</span></button>
+          <ul class="nav-dropdown" id="dropdown-programs">
+            <li><a href="programs.html">All Programs</a></li>
+            <li><a href="cna-training-program.html">CNA Training Program</a></li>
+            <li><a href="hha-program.html">HHA Program</a></li>
+            <li><a href="cpr-certification.html">CPR Certification</a></li>
+          </ul>
+        </li>
         <li><a href="admissions.html">Admissions</a></li>
-        <li><a href="student-resources.html">Student Resources</a></li>
-        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="about.html">About</a></li>
+        <li class="nav-item has-dropdown">
+          <button type="button" class="nav-dropdown-trigger" aria-expanded="false" aria-controls="dropdown-resources">Resources <span class="caret" aria-hidden="true">&#9662;</span></button>
+          <ul class="nav-dropdown" id="dropdown-resources">
+            <li><a href="student-resources.html">Student Resources</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="clinical-partnerships.html">Clinical Partnerships</a></li>
+          </ul>
+        </li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
       <div class="header-actions">
@@ -78,7 +100,7 @@
         <p class="lede">Nurse Driven Training offers hands-on CNA, Home Health Aide, and CPR classes built for real life — evening, weekend, and flexible scheduling for students who are ready to move toward a career in patient care.</p>
         <div class="hero-cta-row">
           <a class="btn btn-primary btn-lg" href="contact.html">Request Program Info</a>
-          <a class="btn btn-outline btn-lg" href="programs.html">See Our Programs</a>
+          <a class="btn btn-outline btn-lg" href="programs.html">Explore Programs</a>
         </div>
         <ul class="hero-meta">
           <li><span>📍 2270 Tamiami Trail, Port Charlotte, FL 33952</span></li>
@@ -162,7 +184,7 @@
       <div class="section-head center">
         <span class="kicker">Serving Charlotte County</span>
         <h2>A growing community that needs trained caregivers</h2>
-        <p>Charlotte County is one of the fastest-growing counties in Florida, with a population that skews older and a healthcare sector that's actively hiring. Nurse Driven Training exists to help Port Charlotte, Punta Gorda, and North Port residents step into that demand-ready field.</p>
+        <p>Charlotte County is among the faster-growing counties in Florida, per public county population data, with a population that skews older and a healthcare sector that continues to hire. Nurse Driven Training exists to help Port Charlotte, Punta Gorda, and North Port residents step into that field.</p>
       </div>
       <div class="grid grid-3">
         <div class="card"><h3>Port Charlotte</h3><p>Our home base at 2270 Tamiami Trail, minutes from most of the county.</p></div>
@@ -261,4 +283,6 @@
   <a class="btn btn-navy" href="tel:+19418221796">Call Now</a>
   <a class="btn btn-primary" href="contact.html">Request Info</a>
 </div>
-<script src
+<script src="js/main.js"></script>
+</body>
+</html>

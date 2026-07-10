@@ -6,10 +6,34 @@
 <title>Contact Us | Nurse Driven Training — Port Charlotte, FL</title>
 <meta name="description" content="Contact Nurse Driven Training in Port Charlotte, FL to enroll in a CNA, HHA, or CPR program, check start dates, or ask about pricing and registration.">
 <link rel="canonical" href="https://www.nursedriventraining.com/contact.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Nurse Driven Training">
+<meta property="og:title" content="Contact Us | Nurse Driven Training — Port Charlotte, FL">
+<meta property="og:description" content="Contact Nurse Driven Training in Port Charlotte, FL to enroll in a CNA, HHA, or CPR program, check start dates, or ask about pricing and registration.">
+<meta property="og:url" content="https://www.nursedriventraining.com/contact.html">
+<meta property="og:image" content="https://www.nursedriventraining.com/assets/img/og-cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Contact Us | Nurse Driven Training">
+<meta name="twitter:description" content="Reach out to enroll or ask questions about our CNA, HHA, and CPR programs.">
+<meta name="twitter:image" content="https://www.nursedriventraining.com/assets/img/og-cover.jpg">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.nursedriventraining.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Contact", "item": "https://www.nursedriventraining.com/contact.html" }
+  ]
+}
+</script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -22,12 +46,25 @@
     <nav class="main-nav" aria-label="Primary">
       <ul class="nav-links" id="primary-nav">
         <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="programs.html">Programs</a></li>
-        <li><a href="clinical-partnerships.html">Clinical Partnerships</a></li>
+        <li class="nav-item has-dropdown">
+          <button type="button" class="nav-dropdown-trigger" aria-expanded="false" aria-controls="dropdown-programs">Programs <span class="caret" aria-hidden="true">&#9662;</span></button>
+          <ul class="nav-dropdown" id="dropdown-programs">
+            <li><a href="programs.html">All Programs</a></li>
+            <li><a href="cna-training-program.html">CNA Training Program</a></li>
+            <li><a href="hha-program.html">HHA Program</a></li>
+            <li><a href="cpr-certification.html">CPR Certification</a></li>
+          </ul>
+        </li>
         <li><a href="admissions.html">Admissions</a></li>
-        <li><a href="student-resources.html">Student Resources</a></li>
-        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="about.html">About</a></li>
+        <li class="nav-item has-dropdown">
+          <button type="button" class="nav-dropdown-trigger" aria-expanded="false" aria-controls="dropdown-resources">Resources <span class="caret" aria-hidden="true">&#9662;</span></button>
+          <ul class="nav-dropdown" id="dropdown-resources">
+            <li><a href="student-resources.html">Student Resources</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="clinical-partnerships.html">Clinical Partnerships</a></li>
+          </ul>
+        </li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
       <div class="header-actions">
@@ -83,9 +120,16 @@
         <h2 style="font-size:1.4rem;">Request Information</h2>
         <form name="program-inquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you.html" data-netlify-ajax data-success="/thank-you.html">
           <input type="hidden" name="form-name" value="program-inquiry" />
+          <input type="hidden" name="page_url" value="" />
+          <input type="hidden" name="utm_source" value="" />
+          <input type="hidden" name="utm_medium" value="" />
+          <input type="hidden" name="utm_campaign" value="" />
+          <input type="hidden" name="utm_term" value="" />
+          <input type="hidden" name="utm_content" value="" />
           <p class="hidden-field">
             <label>Don't fill this out if you're human: <input name="bot-field" /></label>
           </p>
+          <div class="alert alert-error form-error" role="alert" tabindex="-1" hidden></div>
 
           <div class="field">
             <label for="name">Full Name *</label>
@@ -145,9 +189,9 @@
       <div class="photo-frame wide" style="max-width:900px;margin:0 auto;">
         <img src="assets/img/exterior-storefront.jpg" alt="Nurse Driven Training's Port Charlotte, FL location on Tamiami Trail" width="900" height="506" loading="lazy">
       </div>
-      <div class="owner-note" style="max-width:900px;margin:var(--space-3) auto 0;">
-        <strong>Owner note:</strong> An embedded Google Map can be added here once you confirm you're comfortable sharing the exact map pin publicly (recommended — it builds trust and helps local SEO).
-      </div>
+      <p class="text-center" style="margin-top:var(--space-3);">
+        <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&amp;query=2270+Tamiami+Trail+Port+Charlotte+FL+33952" target="_blank" rel="noopener">Get Directions</a>
+      </p>
     </div>
   </section>
 </main>
@@ -205,4 +249,3 @@
 <script src="js/main.js"></script>
 </body>
 </html>
-            

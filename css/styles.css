@@ -250,10 +250,16 @@ section { padding: var(--space-6) 0; }
     overflow: hidden;
     transition: max-height 0.25s ease;
   }
-  .nav-links.is-open { max-height: 640px; overflow-y: auto; }
+  .nav-links {
+    opacity: 0;
+    transition: max-height .3s var(--motion-ease, ease), opacity .2s ease;
+  }
+  .nav-links.is-open { max-height: 640px; overflow-y: auto; opacity: 1; }
   .nav-links > li { border-top: 1px solid var(--border); }
-  .nav-links a { display: block; padding: 1rem var(--space-3); }
+  .nav-links a { display: block; padding: 1rem var(--space-3); min-height: 44px; }
 }
+/* Lock background scroll while the mobile menu is open */
+body.nav-open { overflow: hidden; }
 @media (min-width: 900px) {
   .nav-toggle { display: none; }
   .header-phone { display: inline-flex; align-items: center; gap: 0.4rem; }
@@ -797,6 +803,24 @@ fieldset { border: none; padding: 0; margin: 0; }
   .hero-meta { gap: .75rem; }
   .hero-meta li { width: 100%; }
   .cta-banner { padding: 2.2rem 1.25rem; }
+
+  /* Shorter, smaller-distance motion on phones: faster to settle, still smooth, no jank. */
+  .js .reveal {
+    transform: translateY(14px);
+    transition-duration: .45s;
+  }
+  .js .reveal.reveal-left { transform: translateX(-16px); }
+  .js .reveal.reveal-right { transform: translateX(16px); }
+  .js .reveal.reveal-scale { transform: translateY(10px) scale(.98); }
+  .js .hero.is-ready .eyebrow,
+  .js .hero.is-ready h1,
+  .js .hero.is-ready .lede,
+  .js .hero.is-ready .hero-cta-row,
+  .js .hero.is-ready .hero-meta,
+  .js .hero.is-ready .hero-media {
+    transition-duration: .5s;
+  }
+  .card:hover, .step:hover { transform: none; }
 }
 
 /* Respect user motion preferences. */
@@ -1002,6 +1026,16 @@ main > section:not(.hero):not(.page-hero)::before {
 .card:hover, .step:hover {
   transform: translateY(-7px);
   box-shadow: 0 22px 48px -28px rgba(74,23,40,.48);
+}
+/* Touch feedback: :hover never fires on tap, so give cards/steps/buttons a tap response */
+@media (max-width: 899px) {
+  .card:active, .step:active {
+    transform: translateY(-2px) scale(.99);
+    box-shadow: 0 14px 30px -20px rgba(74,23,40,.5);
+    transition: transform .12s ease, box-shadow .12s ease;
+  }
+  .btn:active { transform: scale(.97); }
+  .trust-item:active .ico { transform: translateY(-2px) scale(1.05); }
 }
 .card::after {
   content: "";

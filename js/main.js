@@ -43,11 +43,13 @@
       var expanded = toggle.getAttribute("aria-expanded") === "true";
       toggle.setAttribute("aria-expanded", String(!expanded));
       navLinks.classList.toggle("is-open");
+      document.body.classList.toggle("nav-open", !expanded);
     });
     navLinks.querySelectorAll(":scope > li > a").forEach(function (link) {
       link.addEventListener("click", function () {
         toggle.setAttribute("aria-expanded", "false");
         navLinks.classList.remove("is-open");
+        document.body.classList.remove("nav-open");
       });
     });
     /* Escape closes the mobile menu and returns focus to the toggle button */
@@ -55,6 +57,7 @@
       if (e.key === "Escape" && navLinks.classList.contains("is-open")) {
         navLinks.classList.remove("is-open");
         toggle.setAttribute("aria-expanded", "false");
+        document.body.classList.remove("nav-open");
         toggle.focus();
       }
     });

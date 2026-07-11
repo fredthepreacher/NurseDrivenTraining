@@ -14,6 +14,7 @@
   --gold-light: #F7A8B8; /* WCAG AA-safe strawberry for text on dark berry backgrounds */
   --gold-tint: #FDEDE1;  /* peachy cream tint */
   --on-gold: #3A1220;    /* WCAG AA-safe dark text for use on top of --gold buttons */
+  --peach-heading: #F5A897; /* warm coral-peach for headings on dark berry backgrounds — ~4.9:1 vs --navy, ~7.6:1 vs --navy-dark (WCAG AA safe) */
   --sage: #8FAE8C;       /* muted leaf green — a nod to the strawberry leaf */
   --sage-tint: #EEF4EC;
   --cream: #FFF8F4;      /* warm cream background */
@@ -79,8 +80,16 @@ section { padding: var(--space-6) 0; }
 .section-tight { padding: var(--space-5) 0; }
 .section-alt { background: var(--white); }
 .section-navy { background: var(--navy); color: var(--white); }
-.section-navy h2, .section-navy h3 { color: var(--white); }
 .section-sage { background: var(--sage-tint); }
+
+/* Headings on dark berry backgrounds — the global h1-h4 rule below sets var(--navy),
+   which is nearly invisible on these backgrounds. Override with a WCAG AA-safe peach. */
+.hero h1, .hero h2, .hero h3, .hero h4,
+.page-hero h1, .page-hero h2, .page-hero h3, .page-hero h4,
+.cta-banner h1, .cta-banner h2, .cta-banner h3, .cta-banner h4,
+.section-navy h1, .section-navy h2, .section-navy h3, .section-navy h4 {
+  color: var(--peach-heading);
+}
 
 /* Skip link */
 .skip-link {

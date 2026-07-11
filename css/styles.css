@@ -658,18 +658,7 @@ fieldset { border: none; padding: 0; margin: 0; }
 .alert-error { background: #FCEAEA; border-color: var(--danger); color: #7A241E; }
 .alert[hidden] { display: none; }
 
-/* Respect reduced-motion preferences */
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  *, *::before, *::after {
-    animation-duration: 0.001ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.001ms !important;
-    scroll-behavior: auto !important;
-  }
-}
-
-/* ========================================================================== 
+/* ==========================================================================
    2026 UX/UI Conversion & Motion Enhancement Layer
    ========================================================================== */
 :root {

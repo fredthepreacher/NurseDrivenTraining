@@ -234,7 +234,7 @@ section { padding: var(--space-6) 0; }
 .nav-toggle[aria-expanded="true"]::before { transform: rotate(45deg); }
 .nav-toggle[aria-expanded="true"]::after { transform: rotate(-45deg); }
 
-@media (max-width: 899px) {
+@media (max-width: 1139px) {
   .nav-links {
     position: absolute;
     top: 100%;
@@ -260,12 +260,12 @@ section { padding: var(--space-6) 0; }
 }
 /* Lock background scroll while the mobile menu is open */
 body.nav-open { overflow: hidden; }
-@media (min-width: 900px) {
+@media (min-width: 1140px) {
   .nav-toggle { display: none; }
   .header-phone { display: inline-flex; align-items: center; gap: 0.4rem; }
 }
 .header-cta { display: none; }
-@media (min-width: 900px) { .header-cta { display: inline-flex; } }
+@media (min-width: 1140px) { .header-cta { display: inline-flex; } }
 
 /* ---------- Nav dropdowns (Programs / Resources) ---------- */
 .nav-item.has-dropdown { position: relative; }
@@ -287,7 +287,7 @@ body.nav-open { overflow: hidden; }
 .nav-dropdown-trigger .caret { font-size: 0.65em; transition: transform 0.2s ease; }
 .nav-dropdown-trigger[aria-expanded="true"] .caret { transform: rotate(180deg); }
 .nav-dropdown { list-style: none; margin: 0; padding: 0; }
-@media (min-width: 900px) {
+@media (min-width: 1140px) {
   .nav-dropdown-trigger { padding: 0.4rem 0.1rem; }
   .nav-dropdown {
     position: absolute;
@@ -323,7 +323,7 @@ body.nav-open { overflow: hidden; }
   }
   .nav-dropdown a:hover { background: var(--navy-tint); }
 }
-@media (max-width: 899px) {
+@media (max-width: 1139px) {
   .nav-dropdown-trigger { padding: 1rem var(--space-3); }
   .nav-dropdown {
     max-height: 0;
@@ -351,9 +351,9 @@ body.nav-open { overflow: hidden; }
   box-shadow: 0 -8px 20px -12px rgba(74,23,40,0.22);
 }
 .mobile-cta-bar a { flex: 1; }
-@media (min-width: 900px) { .mobile-cta-bar { display: none; } }
+@media (min-width: 1140px) { .mobile-cta-bar { display: none; } }
 body { padding-bottom: 76px; }
-@media (min-width: 900px) { body { padding-bottom: 0; } }
+@media (min-width: 1140px) { body { padding-bottom: 0; } }
 
 /* ---------- Hero ---------- */
 .hero {
@@ -1028,7 +1028,7 @@ main > section:not(.hero):not(.page-hero)::before {
   box-shadow: 0 22px 48px -28px rgba(74,23,40,.48);
 }
 /* Touch feedback: :hover never fires on tap, so give cards/steps/buttons a tap response */
-@media (max-width: 899px) {
+@media (max-width: 1139px) {
   .card:active, .step:active {
     transform: translateY(-2px) scale(.99);
     box-shadow: 0 14px 30px -20px rgba(74,23,40,.5);

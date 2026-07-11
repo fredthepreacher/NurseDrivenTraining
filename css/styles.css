@@ -810,3 +810,270 @@ fieldset { border: none; padding: 0; margin: 0; }
   }
   .js .reveal { opacity: 1; transform: none; }
 }
+
+/* ========================================================================== 
+   Wavy-inspired experience layer — scroll storytelling, polish, and motion
+   ========================================================================== */
+:root {
+  --motion-ease: cubic-bezier(.22, 1, .36, 1);
+  --motion-spring: cubic-bezier(.2, .8, .2, 1.15);
+}
+
+html { scroll-padding-top: 96px; }
+body { overflow-x: clip; }
+
+/* Slim page-completion indicator inspired by the Wavy Sites experience. */
+.scroll-progress {
+  position: fixed;
+  inset: 0 0 auto 0;
+  height: 4px;
+  z-index: 1000;
+  pointer-events: none;
+  background: rgba(255,255,255,.12);
+}
+.scroll-progress__bar {
+  width: 100%;
+  height: 100%;
+  transform: scaleX(0);
+  transform-origin: left center;
+  background: linear-gradient(90deg, var(--gold), var(--peach-heading), #ffd1c5);
+  box-shadow: 0 0 18px rgba(232,97,127,.48);
+  will-change: transform;
+}
+
+/* Desktop scroll journey rail */
+.page-journey {
+  position: fixed;
+  right: 18px;
+  top: 50%;
+  z-index: 70;
+  display: grid;
+  gap: 8px;
+  transform: translateY(-50%);
+}
+.page-journey a {
+  position: relative;
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  border: 2px solid rgba(122,41,66,.35);
+  background: rgba(255,248,244,.82);
+  box-shadow: 0 3px 12px rgba(74,23,40,.12);
+  transition: width .25s var(--motion-ease), background .25s ease, border-color .25s ease;
+}
+.page-journey a::before {
+  content: attr(data-label);
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translate(8px,-50%);
+  padding: .34rem .6rem;
+  border-radius: 999px;
+  background: var(--navy-dark);
+  color: #fff;
+  font-size: .72rem;
+  font-weight: 700;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: .2s ease;
+}
+.page-journey a:hover::before,
+.page-journey a:focus-visible::before { opacity: 1; visibility: visible; transform: translate(0,-50%); }
+.page-journey a.is-active { width: 28px; background: var(--gold); border-color: var(--gold); }
+
+/* Back-to-top control */
+.back-to-top {
+  position: fixed;
+  right: 20px;
+  bottom: 84px;
+  z-index: 80;
+  width: 46px;
+  height: 46px;
+  border: 0;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--navy-dark);
+  color: #fff;
+  font-size: 1.15rem;
+  box-shadow: 0 14px 30px -14px rgba(74,23,40,.7);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px) scale(.94);
+  transition: .28s var(--motion-ease);
+  cursor: pointer;
+}
+.back-to-top.is-visible { opacity: 1; visibility: visible; transform: translateY(0) scale(1); }
+.back-to-top:hover { transform: translateY(-3px) scale(1.03); }
+
+/* Hero arrival sequence and subtle dimensional depth */
+.hero { position: relative; isolation: isolate; overflow: hidden; }
+.hero::before,
+.hero::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  border-radius: 50%;
+  filter: blur(2px);
+  opacity: .34;
+  pointer-events: none;
+}
+.hero::before { width: 360px; height: 360px; right: -120px; top: -160px; background: radial-gradient(circle, #f7a8b8, transparent 68%); }
+.hero::after { width: 280px; height: 280px; left: -140px; bottom: -160px; background: radial-gradient(circle, #f5a897, transparent 70%); }
+.js .hero .eyebrow,
+.js .hero h1,
+.js .hero .lede,
+.js .hero .hero-cta-row,
+.js .hero .hero-meta,
+.js .hero .hero-media {
+  opacity: 0;
+  transform: translateY(24px);
+}
+.js .hero.is-ready .eyebrow,
+.js .hero.is-ready h1,
+.js .hero.is-ready .lede,
+.js .hero.is-ready .hero-cta-row,
+.js .hero.is-ready .hero-meta,
+.js .hero.is-ready .hero-media {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity .8s var(--motion-ease), transform .8s var(--motion-ease);
+}
+.js .hero.is-ready h1 { transition-delay: .08s; }
+.js .hero.is-ready .lede { transition-delay: .16s; }
+.js .hero.is-ready .hero-cta-row { transition-delay: .24s; }
+.js .hero.is-ready .hero-meta { transition-delay: .32s; }
+.js .hero.is-ready .hero-media { transition-delay: .18s; }
+
+.scroll-cue {
+  display: inline-flex;
+  align-items: center;
+  gap: .65rem;
+  margin-top: 1.15rem;
+  color: rgba(255,255,255,.82);
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+.scroll-cue i {
+  width: 26px;
+  height: 42px;
+  border: 2px solid rgba(255,255,255,.65);
+  border-radius: 999px;
+  position: relative;
+}
+.scroll-cue i::after {
+  content: "";
+  position: absolute;
+  width: 4px;
+  height: 8px;
+  left: 50%;
+  top: 7px;
+  border-radius: 999px;
+  background: var(--gold-light);
+  transform: translateX(-50%);
+  animation: scrollCue 1.8s ease-in-out infinite;
+}
+@keyframes scrollCue { 0% { opacity:0; transform:translate(-50%,0); } 30% { opacity:1; } 100% { opacity:0; transform:translate(-50%,15px); } }
+
+/* Better visual rhythm between major sections */
+main > section { position: relative; }
+main > section:not(.hero):not(.page-hero)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: min(1120px, calc(100% - 3rem));
+  height: 1px;
+  transform: translateX(-50%);
+  background: linear-gradient(90deg, transparent, rgba(232,97,127,.23), transparent);
+}
+.section-head .kicker,
+.section-head .eyebrow { letter-spacing: .13em; }
+.section-head h2 { text-wrap: balance; }
+
+/* Cards feel more alive without becoming distracting. */
+.card, .step, .trust-item, .photo-frame {
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+.card:hover, .step:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 22px 48px -28px rgba(74,23,40,.48);
+}
+.card::after {
+  content: "";
+  position: absolute;
+  inset: auto 18px 0 18px;
+  height: 3px;
+  border-radius: 999px 999px 0 0;
+  background: linear-gradient(90deg, var(--gold), var(--peach-heading));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .35s var(--motion-ease);
+}
+.card:hover::after { transform: scaleX(1); }
+.card { position: relative; overflow: hidden; }
+
+.photo-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(135deg, rgba(245,168,151,.08), transparent 52%, rgba(122,41,66,.12));
+  mix-blend-mode: multiply;
+}
+.photo-frame img { transition: transform 1s var(--motion-ease), filter .45s ease; }
+.photo-frame:hover img { transform: scale(1.035); filter: saturate(1.06) contrast(1.03); }
+
+/* Trust bar now moves like a premium proof strip on smaller screens. */
+.trust-bar { overflow: hidden; }
+.trust-item .ico { transition: transform .35s var(--motion-spring); }
+.trust-item:hover .ico { transform: translateY(-3px) rotate(-4deg) scale(1.08); }
+
+/* Reveal variants assigned by JS */
+.js .reveal.reveal-scale { transform: translateY(18px) scale(.965); }
+.js .reveal.reveal-left { transform: translateX(-34px); }
+.js .reveal.reveal-right { transform: translateX(34px); }
+.js .reveal.is-visible { transform: translate(0,0) scale(1); }
+
+/* Header polish */
+.site-header { transition: padding .3s var(--motion-ease), box-shadow .3s ease, background .3s ease; }
+.site-header.is-scrolled .header-bar { padding-top: .58rem; padding-bottom: .58rem; }
+.header-bar { transition: padding .3s var(--motion-ease); }
+.nav-links a { position: relative; border-bottom: 0; }
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: .1rem;
+  right: .1rem;
+  bottom: .1rem;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .25s var(--motion-ease);
+}
+.nav-links a:hover::after,
+.nav-links a[aria-current="page"]::after { transform: scaleX(1); }
+
+@media (max-width: 1050px) {
+  .page-journey { display: none; }
+}
+@media (max-width: 700px) {
+  .scroll-progress { height: 3px; }
+  .back-to-top { right: 14px; bottom: 78px; width: 42px; height: 42px; }
+  .scroll-cue { display: none; }
+  .trust-bar-inner { scroll-snap-type: x proximity; overflow-x: auto; flex-wrap: nowrap; justify-content: flex-start; scrollbar-width: none; }
+  .trust-bar-inner::-webkit-scrollbar { display: none; }
+  .trust-item { min-width: 78vw; scroll-snap-align: center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-cue i::after { animation: none; }
+  .js .hero .eyebrow, .js .hero h1, .js .hero .lede, .js .hero .hero-cta-row, .js .hero .hero-meta, .js .hero .hero-media { opacity: 1; transform: none; }
+  .page-journey a, .back-to-top, .photo-frame img { transition: none; }
+}

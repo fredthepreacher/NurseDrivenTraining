@@ -668,3 +668,156 @@ fieldset { border: none; padding: 0; margin: 0; }
     scroll-behavior: auto !important;
   }
 }
+
+/* ========================================================================== 
+   2026 UX/UI Conversion & Motion Enhancement Layer
+   ========================================================================== */
+:root {
+  --peach-deep: #E98979;
+  --peach-rich: #D86F64;
+  --motion-ease: cubic-bezier(.22, 1, .36, 1);
+}
+
+/* Richer, warmer image treatment so photography does not wash into the cream UI. */
+.photo-frame,
+.hero-media {
+  position: relative;
+  isolation: isolate;
+  background: var(--navy-dark);
+}
+.photo-frame::after,
+.hero-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background: linear-gradient(145deg, rgba(216,111,100,.16), rgba(122,41,66,.12));
+  mix-blend-mode: multiply;
+}
+.photo-frame img,
+.hero-media img {
+  filter: saturate(1.12) contrast(1.08) brightness(.93) sepia(.04);
+  transition: transform .8s var(--motion-ease), filter .5s ease;
+}
+.photo-frame:hover img,
+.hero-media:hover img {
+  transform: scale(1.025);
+  filter: saturate(1.18) contrast(1.1) brightness(.96) sepia(.03);
+}
+.hero-media {
+  box-shadow: 0 28px 70px -28px rgba(20,5,12,.7);
+  transform: rotate(.35deg);
+}
+
+/* Improve hierarchy and conversion energy. */
+.hero h1 { max-width: 13ch; text-wrap: balance; }
+.hero p.lede { max-width: 58ch; }
+.hero-grid > div:first-child { position: relative; z-index: 2; }
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 70px;
+  background: linear-gradient(to bottom, transparent, rgba(74,23,40,.24));
+  pointer-events: none;
+}
+.hero { position: relative; overflow: hidden; }
+
+.card,
+.step,
+.trust-item {
+  transition: transform .28s var(--motion-ease), box-shadow .28s ease, border-color .28s ease;
+}
+.card:hover,
+.step:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 42px -22px rgba(74,23,40,.35);
+  border-color: rgba(216,111,100,.45);
+}
+.trust-item:hover { transform: translateY(-3px); }
+
+/* Student conversion pathway */
+.enrollment-path {
+  background:
+    radial-gradient(700px 300px at 10% 10%, rgba(233,137,121,.18), transparent 65%),
+    var(--white);
+}
+.path-card {
+  position: relative;
+  overflow: hidden;
+}
+.path-card::before {
+  content: "";
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  right: -35px;
+  top: -35px;
+  border-radius: 50%;
+  background: var(--gold-tint);
+}
+.path-card h3,
+.path-card p { position: relative; z-index: 1; }
+.path-icon {
+  width: 3rem;
+  height: 3rem;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  background: var(--navy);
+  color: var(--white);
+  font-weight: 800;
+  box-shadow: 0 8px 18px -10px rgba(74,23,40,.55);
+  position: relative;
+  z-index: 1;
+}
+
+/* Scroll reveal. Content remains visible when JS is unavailable. */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity .75s var(--motion-ease), transform .75s var(--motion-ease);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.js .reveal.reveal-left { transform: translateX(-32px); }
+.js .reveal.reveal-right { transform: translateX(32px); }
+.js .reveal.is-visible { opacity: 1; transform: translate(0,0); }
+
+/* Button and navigation polish */
+.btn { position: relative; overflow: hidden; }
+.btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 20%, rgba(255,255,255,.24) 48%, transparent 76%);
+  transform: translateX(-130%);
+  transition: transform .6s ease;
+}
+.btn:hover::after { transform: translateX(130%); }
+.site-header { transition: box-shadow .25s ease, background .25s ease; }
+.site-header.is-scrolled { box-shadow: 0 10px 30px -24px rgba(74,23,40,.65); background: rgba(255,248,244,.985); }
+
+/* Mobile refinements */
+@media (max-width: 699px) {
+  section { padding: 3.5rem 0; }
+  .hero { padding: 4.5rem 0 3.5rem; }
+  .hero h1 { max-width: none; }
+  .hero-media { transform: none; }
+  .hero-meta { gap: .75rem; }
+  .hero-meta li { width: 100%; }
+  .cta-banner { padding: 2.2rem 1.25rem; }
+}
+
+/* Respect user motion preferences. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .js .reveal { opacity: 1; transform: none; }
+}

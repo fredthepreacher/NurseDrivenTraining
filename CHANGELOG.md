@@ -1,5 +1,14 @@
 # Nurse Driven Training — Changelog
 
+## Image repositioning and technical audit
+
+- **Fixed a real layout flaw from the prior round**: the Admissions page combined an individual graduate portrait with the wide graduation-class photo, both forced into a "tall" (3:4) aspect frame — the group photo was visibly cropped/distorted to fit. Admissions now shows only the full graduation-class photo, displayed at its natural wide aspect ratio (photo-frame wide, max-width 900px) with a short supporting paragraph. No portrait remains on this page.
+- Relocated both individual graduate portraits to a new "Student Milestones" section on the CNA Training Program page, placed after the classroom/completion content and before the final CTA. Heading: "A moment worth working toward." Both portraits use a consistent, undistorted 4:5 aspect ratio (explicit `aspect-ratio:4/5` matching each image's 340×425 width/height attributes, so no layout shift on load) in a 2-column grid that stacks to a single column below 700px.
+- Alt text/captions kept neutral and name-free, as instructed: "Celebrating a Nurse Driven Training program milestone" and "A proud graduation moment at Nurse Driven Training."
+- No filenames, compression, or `<picture>`/WebP setup changed — this was a pure repositioning of existing, already-optimized assets.
+- **Technical audit performed**: cross-checked every `assets/img/...` reference across all 15 HTML pages against the actual contents of `assets/img/` — zero broken image references sitewide. Verified the new Student Milestones grid collapses to one column on mobile via the existing `.grid-2` responsive rule (`@media (min-width: 700px)`). Verified aspect-ratio consistency on all relocated/repositioned images to prevent layout shift.
+- **Not performed this round (no tool access in this environment)**: an actual browser-based Lighthouse run, real Core Web Vitals field data, and AVIF image generation. These remain open follow-ups if wanted; the manual checks above (broken-link/image sweep, CLS/aspect-ratio audit, responsive-grid verification) are the realistic substitute performed instead.
+
 ## Real photo integration (graduation, classroom, CPR practice)
 
 - Added 7 authentic photographs supplied by the owner: full CNA graduation-class photo, 2 individual graduate portraits, graduate-with-instructors photo, real classroom instruction photo, adult CPR practice photo, and infant CPR/patient-care practice photo. Renamed with descriptive, SEO-friendly filenames; exported as optimized JPEG + WebP (full-size and mobile variants) with no aggressive filtering, matching the already-polished source images.

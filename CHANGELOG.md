@@ -1,5 +1,18 @@
 # Nurse Driven Training — Changelog
 
+## Real photo integration (graduation, classroom, CPR practice)
+
+- Added 7 authentic photographs supplied by the owner: full CNA graduation-class photo, 2 individual graduate portraits, graduate-with-instructors photo, real classroom instruction photo, adult CPR practice photo, and infant CPR/patient-care practice photo. Renamed with descriptive, SEO-friendly filenames; exported as optimized JPEG + WebP (full-size and mobile variants) with no aggressive filtering, matching the already-polished source images.
+- Homepage hero: replaced the older, lower-resolution classroom photo with the new, sharper real classroom instruction photo (same frame/position, updated alt text).
+- Homepage: added a new "Real Students. Real Skills. Real Progress." section featuring the graduation-class photo plus both graduate portraits and the graduate-with-instructors photo.
+- CNA Training Program page: swapped in the new classroom photo and added a graduation/completion photo section before the final CTA.
+- CPR Certification page: added a new "Real skills practice, not just lecture" section with the adult CPR and infant CPR photos side by side.
+- HHA Program page: added the infant CPR/patient-care photo to illustrate hands-on safety skills.
+- About page: added a "Mentorship that carries through to graduation" section with the graduate-with-instructors photo.
+- Admissions page: added a "Students who walked this same path" section with a graduate portrait and the graduation-class photo.
+- All new images use `<picture>` with WebP + JPEG sources, `srcset`/`sizes` for mobile-appropriate file sizes, `width`/`height` to prevent layout shift, `loading="lazy"` (except the hero, which stays eager/high-priority), and unique, accurate alt text.
+- Not done this round (deferred, out of scope for this pass): a dedicated photo gallery page, per-photo `object-position` tuning at all 5 required breakpoints, a custom 1200×630 Open Graph crop of the graduation photo, and Facility Sponsorship/Clinical Partnerships/Student Resources page placements. All of these are straightforward follow-ups if wanted.
+
 ## Contrast and color repairs
 
 - **Fixed a real dark-on-dark bug**: the global `h1, h2, h3, h4 { color: var(--navy); }` rule was overriding the light text color on every dark-background section, making the homepage hero heading ("Start a healthcare career, guided by nurses who've done the work."), the "Partner With Us" banner heading, and every inner-page hero heading nearly invisible against the deep berry background.

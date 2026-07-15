@@ -1,5 +1,9 @@
 # Nurse Driven Training — Changelog
 
+## Hero video vertical crop fix (too much ceiling, not enough classroom)
+
+- Owner feedback on the live site: the hero video crop was showing mostly ceiling with only a sliver of the actual classroom. Tested several vertical crop positions against the real footage and moved the crop window down from `object-position: center 38%` to `center 55%` (desktop) and `34%` to `52%` (mobile) — this shows the instructor fully, students, laptop, and chairs, with no ceiling visible. CSS-only change (`css/styles.css`), no new video export needed.
+
 ## Blur-free hero video, pricing transparency, and local-claim sourcing
 
 - **Hero video, blur-side fix**: the previous full-width treatment used the original wide (1280×720) source, which has blurred pillarbox padding baked into the file itself (confirmed by inspecting the MP4 directly — this isn't something CSS can remove). I don't have the separate raw source clips used to build that combined file, only the one pre-merged MP4, so a true per-clip editorial re-cut (the ideal fix) isn't possible here. Instead, re-exported a clean, blur-free version by cropping out the padding entirely and keeping only the real footage (`assets/video/nurse-driven-training-hero-full-bleed.mp4`, 400×720, 645KB, zero blur). This is a real trade-off: because only ~430px of the original 1280px frame was ever sharp content, filling the full hero width with zero blur means showing a tighter vertical slice of the room at any given moment (roughly the center 30-35% of the frame height at typical hero proportions) rather than a wide establishing shot. Tuned `object-position` (`center 38%` desktop, `center 34%` mobile) to favor the band where instructor/whiteboard activity tends to sit. Regenerated the poster image to match.

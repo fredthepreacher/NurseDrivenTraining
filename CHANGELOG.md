@@ -1,5 +1,17 @@
 # Nurse Driven Training — Changelog
 
+## Full-width, subtle hero background video
+
+- **Root cause of the "too prominent/boxed" look**: the previous round kept the hero video in a small contained portrait panel next to the headline (a deliberate choice at the time, since the source footage is vertical). This round restructures the hero so the video is a true full-bleed background layer behind the entire hero section, per new direction referencing the desired look.
+- **Video source change**: switched from the tightly-cropped portrait clip (400×720, no blur padding) back to the original wide clip (1280×720, ~1.5MB) for this full-width treatment. A portrait clip stretched into a full-width band would only show a thin, unpredictable horizontal sliver of the room at any moment; the wide clip (even with its blurred pillarbox padding on the sides) reads much better as a full-width scene, especially once dimmed and overlaid as this treatment requires. At low opacity blended with the brand-color overlay, the blur padding is not distracting. The portrait crop is kept in the repo (`assets/video/nurse-driven-training-hero-background-portrait.mp4`) in case it's wanted again, unreferenced.
+- **New hero structure**: removed the two-column `hero-grid` (text + media panel) layout. The video and a brand-tinted directional overlay (`rgba(52,18,31)` burgundy fading to lighter blush-pink, darker on the left behind the text, more transparent on the right) are absolutely positioned full-bleed behind a single centered content column holding the existing eyebrow, headline, supporting copy, CTAs, and trust/meta list — all unchanged text and links, just restructured containers.
+- **Video treatment**: `opacity: 0.42`, `filter: brightness(0.72) saturate(0.9)`, `object-fit: cover`, `object-position: 55% center` on desktop. Mobile (≤699px) dims further to `opacity: 0.30` with a steeper top-to-bottom overlay gradient and `object-position: 58% center`, matching the requested mobile treatment.
+- Regenerated the poster image from the wide video (`nurse-driven-training-hero-poster.jpg`/`.webp`, 1280×720) to match what's now actually displayed.
+- **Reduced motion**: video is hidden and the hero falls back to the overlay gradient plus the poster image as a CSS background — same visual content, no motion.
+- **Header**: no changes needed. The site header is a solid, nearly-opaque bar (not a transparent overlay sitting on the video), so it was never at risk of losing contrast against the footage.
+- Verified the old `.hero-grid`/`.hero-media` classes are no longer referenced anywhere in the HTML, and confirmed the two JS behaviors that referenced them (`main.js` scroll-reveal target list and a hero-image parallax effect) both fail safely with no target found rather than erroring — no console errors introduced.
+- **Not performed this round (no tool access in this environment)**: a real Lighthouse run and cross-browser autoplay testing (Safari in particular). Recommend a quick check on a real phone after this deploys.
+
 ## Hero background video + Programs page hands-on photo
 
 - **Homepage hero video**: added the supplied classroom video as a looping, muted, autoplaying background clip in the hero's existing media panel (next to the headline/CTA, not full-bleed behind the text). Replaced the static classroom photo that was there before.

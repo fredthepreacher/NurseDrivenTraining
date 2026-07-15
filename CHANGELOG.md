@@ -1,5 +1,11 @@
 # Nurse Driven Training — Changelog
 
+## Fix: About page "Meet the Team" photo cropping heads
+
+- **Root cause**: the team-welcome photo is a portrait-oriented image (1023×1538, ~2:3) but was displayed in `.photo-frame.wide`, a 16:9 landscape container, with the sitewide `.photo-frame img { object-fit: cover }` rule. That combination forced the image to fill a container far wider (relative to its height) than the photo itself, so `cover` scaled it up and cropped roughly a third off the top and a third off the bottom to fill the frame — cutting off both women's heads and hair.
+- **Fix**: gave this specific image an inline `aspect-ratio: 2/3` (matching its native ratio almost exactly) instead of the `wide` (16:9) class. At that ratio the crop needed to fill the frame is under 0.3% of the image — visually identical to showing the full photo — so both heads, hands, faces, and the entrance sign are fully visible at every screen width, without needing separate mobile art direction or an `object-fit: contain` letterbox. Updated the `<img>` width/height attributes to 520×780 to match.
+- Reviewed the rest of the About page for similar issues: no other cropped faces/hands, no duplicate images, all alt text present, spacing and card alignment consistent. No other changes needed.
+
 ## Building-photo removal, About page refresh, and content-accuracy pass
 
 - **Removed the plain building/storefront exterior photo from the entire site**, per explicit owner instruction — it no longer appears anywhere, including the Contact page's "Find Us" section (which now shows address and directions only, no photo). The file itself was not deleted from the project, just removed from display, in case it's wanted again later. The separate photo of two team members waving outside the entrance was intentionally kept (owner confirmed only the plain building shot should go) and remains on the About page's "Meet the Team" section and the Contact page's "Visit Us" section.

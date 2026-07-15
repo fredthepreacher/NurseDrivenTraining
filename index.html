@@ -115,12 +115,23 @@
         </ul>
       </div>
       <div class="hero-media">
-        <div class="photo-frame wide">
-          <picture>
-            <source type="image/webp" srcset="assets/img/nurse-led-cna-classroom-training-port-charlotte-mobile.webp 800w, assets/img/nurse-led-cna-classroom-training-port-charlotte.webp 1535w" sizes="(max-width: 899px) 100vw, 800px">
-            <source type="image/jpeg" srcset="assets/img/nurse-led-cna-classroom-training-port-charlotte-mobile.jpg 800w, assets/img/nurse-led-cna-classroom-training-port-charlotte.jpg 1535w" sizes="(max-width: 899px) 100vw, 800px">
-            <img src="assets/img/nurse-led-cna-classroom-training-port-charlotte.jpg" alt="Nurse instructor teaching CNA students in a Nurse Driven Training classroom in Port Charlotte" width="800" height="450" loading="eager" fetchpriority="high">
-          </picture>
+        <div class="photo-frame hero-video-frame" style="aspect-ratio:5/9;max-width:320px;margin:0 auto;">
+          <video
+            class="hero-video"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="metadata"
+            aria-hidden="true"
+            tabindex="-1"
+            poster="assets/img/nurse-driven-training-hero-poster.jpg"
+            width="400"
+            height="720"
+          >
+            <source src="assets/video/nurse-driven-training-hero-background.mp4" type="video/mp4">
+          </video>
+          <img class="hero-video-fallback" src="assets/img/nurse-driven-training-hero-poster.jpg" alt="Nurse instructor teaching CNA students in a Nurse Driven Training classroom in Port Charlotte" width="400" height="720" loading="eager">
         </div>
       </div>
     </div>
